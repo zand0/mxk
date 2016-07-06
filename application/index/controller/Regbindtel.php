@@ -10,11 +10,11 @@ use think\Cookie;
  * 
  * 
  */
-class RegBindTel extends Controller
+class Regbindtel extends Controller
 {
    
-    public function reg($submit='',$uname='',$pass=''){
-        User::is_login();
+    public function bindtel($submit='',$uname='',$pass=''){
+        /*User::is_login();
 		//获取整个post数据
     	$user = Request::instance()->post();
     	$user['uptime'] = time();
@@ -29,8 +29,8 @@ class RegBindTel extends Controller
 	    	}else{
 	    		return $this->error('注册失败','/index.php/index/Register/reg');
 	    	}
-    	}
-    	return $this->fetch('login/reg');
+    	}*/
+    	return $this->fetch('reg/bindTel');
     	
     }
 	

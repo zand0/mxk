@@ -2,6 +2,7 @@
 namespace app\index\logic;
 use app\index\model\UserReginfo as mdUserReginfo;
 use think\Session;
+use think\Cookie;
 
 class UserReginfo
 {
@@ -22,7 +23,7 @@ class UserReginfo
         ];
         
         $urm = $this->_m;
-        if($this->R_byPhone($data['UR_PHONE'])){
+        if(!$this->R_byPhone($data['UR_PHONE'])){
             $urm->data($data);
             //Session::set('ruid',$data['']);
             //过滤post数组中的非数据表字段数据
@@ -36,27 +37,15 @@ class UserReginfo
         return $this->_m->where('UR_PHONE',$phone)->value('UR_PHONE');
     }
     
-    public function login_check($phone,$code,$pass=''){
-        //检查验证码是否有效
-        
-        $userinfo = $this->R_user($phone);
-        if($pass){
-            $pass = md5($pass);
-            if($pass != $userinfo['UR_PWD']){
-                return 0;
-            }
-        }
-        
-        if(!empty($userinfo)){
-            Session::set('ruid',$userinfo['UR_ID']);
-            return 1;
-        }else{
-            return 0;
-        }
-    }
+    
     
     public function R_user($phone){
         return $this->_m->where('UR_PHONE',$phone)->find();
+    }
+    
+    public static function logout(){
+        Cookie::delete('ruid');
+        Session::delete('ruid');
     }
     /**
      * 验证数据
@@ -71,6 +60,24 @@ class UserReginfo
         if(!$vali->check($data,$rules,$scene)){
             return  $vali->getError();
         }*/
+    }
+    
+    public function login_check($phone,$code,$pass=''){
+        //检查验证码是否有效
+    
+        $userinfo = $this->R_user($phone);
+        if($pass){
+            $pass = md5($pass);
+            if($pass != $userinfo['UR_PWD']){
+                return 0;
+            }
+        }
+        if(!empty($userinfo)){
+            Session::set('ruid',$userinfo['UR_ID']);
+            return 1;
+        }else{
+            return 0;
+        }
     }
 }
 

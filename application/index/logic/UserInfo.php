@@ -9,7 +9,7 @@ class UserInfo
         $this->_m = new mdUserInfo;
     }
     public function C_user($post){
-        $ur_id = 3;//Session::get('ruid');
+        $ur_id = Session::get('ruid');
         if(!$ur_id){
             return 0;
         }
@@ -21,8 +21,7 @@ class UserInfo
             'UWE_ACC'=>       $post['UWE_ACC']?$post['UWE_ACC']:0,
             'UI_CRE_TIME'=>   date('Y-m-d H:i:s',time()),
             'UI_AGE'=> 0,
-            'UI_SEX' => 0,
-            
+            'UI_SEX' => 0  
         ];
         $data['UR_PWD'] = md5($data['UR_PWD']);
         $uim = $this->_m;

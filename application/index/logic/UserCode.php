@@ -17,9 +17,11 @@ class UserCode
         ];
         $uc = $this->_m;
         if($uc->where('UC_PHONE',$data['UC_PHONE'])->value('UC_PHONE')){
+            //此手机号存在便更新
             $uc->allowField(true)->save($data,['UC_PHONE' => $data['UC_PHONE']]);
             return 1;
         }else{
+            //手机号不存在就添加
             return $uc->data($data)->save();
         }
         

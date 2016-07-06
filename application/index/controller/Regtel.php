@@ -28,10 +28,10 @@ class Regtel extends Controller
     	    }
 	    	$ur_logic = new lgUserReginfo;
 	    	if($ur_logic->C_User($post)){
-	    		return $this->success('注册成功','/index.php/index/Login/ucenter');
+	    		return $this->success('注册成功','/index.php/index/Reginfo/subinfo');
 	    	}else{
 	    	    Session::delete('ruid');
-	    		return $this->error('注册失败','/index.php/index/Register/reg');
+	    		return $this->error('注册失败');
 	    	}
     	}
     	return $this->fetch('reg/regTel');
