@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" id="viewport" content="width=device-width, initial-scale=1">
+	<title>信息登录</title>
+	<link rel="stylesheet" href="/static/css/Normalize.css">
+	<link rel="stylesheet" href="/static/css/common.css">
+	<!--[if lt IE 9]>
+    <link href="./static/css/main.css" rel="stylesheet" />
+    <script src="/Scripts/excanvas.compiled.js" type="text/javascript"></script>
+    <![endif]-->
+    <style>
+    *{text-decoration: none;padding: 0;margin: 0;font-family: "Microsoft YaHei";}
+	.opacity .container .icon1{width:80%;height:6vh;background:url('/static/img/username.jpg') no-repeat 2% center;background-size:5vw auto;background-color: #fff;margin: 5vh 10%;border-radius: 0.5vh;}
+	.opacity .container .icon1 .telephone{float:left;border:none;background:none;height:6vh;line-height:6vh;width:100%; text-indent:10%;font-size: 4vw;border-radius: 0.5vh;}
+	.opacity .container .icon2{width:80%;height:6vh;background:url('/static/img/password.png') no-repeat 2% center;background-size:5vw auto;background-color: #fff;margin: 5vh 10%;border-radius: 0.5vh;}
+	.opacity .container .icon2 .password{float:left;border:none;background:none;height:6vh;line-height:6vh;width:100%; text-indent:10%;font-size: 4vw;border-radius: 0.5vh;}
+	.opacity .container .icon3{width:80%;height:6vh;background:url('/static/img/email.png') no-repeat 2% center;background-size:5vw auto;background-color: #fff;margin: 5vh 10%;border-radius: 0.5vh;}
+	.opacity .container .icon3 .password{float:left;border:none;background:none;height:6vh;line-height:6vh;width:100%; text-indent:10%;font-size: 4vw;border-radius: 0.5vh;}
+	.opacity .container .icon4{width:80%;height:6vh;background:url('/static/img/weixin.jpg') no-repeat 2% center;background-size:5vw auto;background-color: #fff;margin: 5vh 10%;border-radius: 0.5vh;}
+	.opacity .container .icon4 .password{float:left;border:none;background:none;height:6vh;line-height:6vh;width:100%; text-indent:10%;font-size: 4vw;border-radius: 0.5vh;}
+	.opacity .container .btn-login{width: 80%;height: 6.5vh;margin: 0 10%;background-color: #A1CE3D;font-size: 5vw;text-align: center;color: #fff;border-radius: 0.5vh;line-height: 5vh;text-align: center;}
+	.opacity .container .btn-login span{float: right;margin-right:20px;}
+	.opacity .container p{width: 34%;margin: 2vh 33%;}
+	.opacity .container p a{text-decoration: none;color: #fff;font-size: 4vw;}
+	.opacity .container .btn-weixin{color:#fff;font-size: 4vw;width:80%;height:6.5vh;margin: 5vh 10%;background-color:#2EB8EB;border-radius: 0.5vh;}
+	.opacity .container .text {margin: 3vh 37%;}
+	</style>
+</head>
+<body id="wrap" onload="init()">
+<form action="/index.php/index/reginfo/subinfo" method="post">
+	<div class="opacity">
+		<div class="container">
+			<img class="logo" src="/static/img/logo.png" alt="">	
+			<p class="text">完善信息</p>
+			<div class="icon1">
+				<input name="UI_NAME" type="tel" id="username" class="telephone" placeholder="&nbsp;请设置您的昵称">
+			</div>
+			<div class="icon2">
+				<input name="UR_PWD" type="password" class="password" placeholder="&nbsp;请设置密码（不少于6位）">
+			</div>
+			<div class="icon3">
+				<input name="UI_EMAIL" type="password" id="mail" class="password" placeholder="&nbsp;请设置邮箱">
+			</div>
+			<div class="icon4">
+				<input name="UWE_ACC" type="password" class="password" placeholder="&nbsp;绑定微信账号">
+			</div>
+			<input type="hidden" name="submit" value="1" />
+			<button class="btn-login">&nbsp;保存<img style="float: right;margin-top:1vh;margin-right:1vh;width:3vh" src="/static/img/right1.png" alt=""></button>
+		
+			<button class="btn-weixin" onclick="javascript:window.location.href='weixin.html'">跳过，以后再说</button>
+			
+		</div>
+		
+	</div>	
+</form>
+</body>
+
+<script type="text/javascript" src="/static/js/bg-move.js"></script>
+</html>
