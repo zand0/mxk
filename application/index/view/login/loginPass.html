@@ -36,19 +36,19 @@
 			<img class="logo" src="/static/img/logo.png" alt="">	
 			<p class="text">登录秒小空</p>
 			<div class="icon1">
-				<input type="tel" id="phone" class="telephone" placeholder="&nbsp;手机号（仅支持大陆号码）">
+				<input name="UR_PHONE" type="tel" id="phone" class="telephone" placeholder="&nbsp;手机号（仅支持大陆号码）">
 			</div>
 			<div class="icon2">
-				<input type="password" id="password" class="password" placeholder="&nbsp;请输入密码">
+				<input name="UR_PWD" type="password" id="password" class="password" placeholder="&nbsp;请输入密码">
 			</div>
 			<div class="confirm">
 				<img src="/static/img/email1.png" alt="">
-				<a href="confirmLogin.html">验证码登录</a>
+				<a href="/index.php/index/Logintel/login">验证码登录</a>
 			</div>
 			<input type="hidden" name="submit" value="1" />
-			<button onclick="this.submit" class="btn-login" onclick="javascript:window.location.href='mypage.html'">登录<span>></span></button>
-			<p><a href="confirmRegister.html">没有账号？去注册</a></p>
-			<button class="btn-weixin" onclick="javascript:window.location.href='weixin.html'"><img src="/static/img/weixin.png" alt=""><span>微信账号登录</span></button>
+			<button onclick="this.submit" class="btn-login" >登录<span>></span></button>
+			<p><a href="/index.php/index/regtel/reg">没有账号？去注册</a></p>
+			<button class="btn-weixin" onclick=""><img src="/static/img/weixin.png" alt=""><span>微信账号登录</span></button>
 		</div>
 	</div>	
 </form>

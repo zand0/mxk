@@ -45,11 +45,11 @@
 			</div>
 			<div class="confirm">
 				<img style="" src="/static/img/password.png" alt="">
-				<a style="vertical-align: super;display:inline-block;" href="login.html">密码登录</a>
+				<a style="vertical-align: super;display:inline-block;" href="/index.php/index/Loginpass/login">密码登录</a>
 			</div>
 			<input type="hidden" name="submit" value="1" />
 			<button onclick="this.submit()" class="btn-login">&nbsp;登录<img style="float: right;margin-top:1vh;margin-right:1vh;width:3vh" src="/static/img/right1.png" alt=""></button>
-			<p><a href="confirmRegister.html">没有账号？去注册</a></p>
+			<p><a href="/index.php/index/regtel/reg">没有账号？去注册</a></p>
 			<button class="btn-weixin" onclick="javascript:window.location.href='weixin.html'"><img src="/static/img/weixin.png" alt=""><span>微信账号登录</span></button>
 		</div>
 		
@@ -95,7 +95,7 @@
   		  dataType:'json',
   		  success: function(data){
   			  if(data.status==1){
-  				  alert('123');
+  				  alert('获取成功');
   			  }
   			  
   		  },

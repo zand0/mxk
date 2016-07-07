@@ -5,6 +5,7 @@ use think\Request;
 use app\index\logic\UserReginfo as lgUserReginfo;
 use app\index\logic\UserCode as lgUserCode;
 use think\Cookie;
+use app\index\logic\validate\UserReginfo as vUserReginfo;
 /*
  * 登录控制器demo
  * 
@@ -24,6 +25,11 @@ class Logintel extends Controller
 			/*if(!$uname || !$pass){
 				return $this->error('用户名或密码不得为空！','login');
 			}*/
+		    $validate = new vUserReginfo;
+		    if(!$validate->check($post,[],'regtel')){
+		        // 验证失败 输出错误信息
+		        return $this->error($validate->getError());
+		    }
 		    $phone = $post['UR_PHONE'];
 		    $code = $post['UC_CODE'];
 	        $uc_logic = new lgUserCode;
@@ -35,7 +41,7 @@ class Logintel extends Controller
 			//实例化logic层的User
 			$ur_logic = new lgUserReginfo;
 			//调用User的方法判断验证登录
-			if($ur_logic->login_check($phone,$code)){
+			if($ur_logic->login_check($phone)){
 				return $this->success('登录成功','/index.php/index/Login/ucenter');
 			}else{
 				return $this->error('登录失败');

@@ -5,6 +5,7 @@ use think\Controller;
 use think\Request;
 use think\Cookie;
 use app\index\logic\UserInfo as lgUserInfo;
+use app\index\logic\validate\UserReginfo as vUserReginfo;
 /*
  * 登录控制器demo
  * 
@@ -22,13 +23,23 @@ class Reginfo extends Controller
     		/*if(!$uname || !$pass){
     			return $this->error('用户名或密码不得为空！','/index.php/index/Login/login');
     		}*/
+    	    $validate = new vUserReginfo;
+    	    if(!$validate->check($post,[],'reginfo')){
+    	        // 验证失败 输出错误信息
+    	        return $this->error($validate->getError());
+    	    }
 	    	//实例化logic层的User
 	    	$ui_logic = new lgUserInfo;
-	    	if($ui_logic->C_user($post)){
-	    		return $this->success('注册成功','/index.php/index/Login/ucenter');
-	    	}else{
-	    		return $this->error('注册失败','/index.php/index/Register/reg');
+	    	try {
+	    	    if($ui_logic->C_regInfo($post)){
+	    	        return $this->success('注册成功','/index.php/index/Login/ucenter');
+	    	    }else{
+	    	        return $this->error('注册失败','/index.php/index/Register/reg');
+	    	    }
+	    	} catch (\Exception $e) {
+	    	    return $this->error($e->getMessage());
 	    	}
+	    	
     	}
     	return $this->fetch('reg/regInfo');
     	

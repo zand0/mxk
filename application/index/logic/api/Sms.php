@@ -10,8 +10,6 @@ class Sms
 {
 	public function SendData($moblie,$content,$code)
 	{
-	    
-	    
 		$target = "http://101.201.61.73:8001/sms.aspx";
 		//替换成自己的测试账号,参数顺序和wenservice对应
 		$post_data = "action=send&userid=&account=bj_mzw&password=v5jGAm6s&mobile=$moblie&sendTime=&content=$content 【秒小空】";
@@ -26,7 +24,6 @@ class Sms
 		    if($uc->CU_code(['phone'=>$moblie,'code'=>$code])){
 		        return ['status'=>1,'msg'=>$res['message']];
 		    }
-			
 		}
 		else
 		{

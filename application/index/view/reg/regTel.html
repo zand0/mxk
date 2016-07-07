@@ -35,15 +35,15 @@
 			<img class="logo" src="/static/img/logo.png" alt="">	
 			<p class="text">注册秒小空</p>
 			<div class="icon1">
-				<input name="phone" type="tel" id="phone" class="telephone" placeholder="&nbsp;手机号(仅支持大陆号码)">
+				<input name="UR_PHONE" type="tel" id="phone" class="telephone" placeholder="&nbsp;手机号(仅支持大陆号码)">
 			</div>
 			<div class="icon2">
-				<input name="code" type="text" class="captaha" placeholder="&nbsp;请输入验证码">	
+				<input name="UC_CODE" type="text" class="captaha" placeholder="&nbsp;请输入验证码">	
 				<div id="getCode" class="num" onclick="getCode()">&nbsp;获取验证码</div>
 			</div>
 			<input type="hidden" name="submit" value="1" />
 			<button  onclick="this.submit();" class="btn-login">&nbsp;注册<img style="float: right;margin-top:1vh;margin-right:1vh;width:3vh" src="/static/img/right1.png" alt=""></button>
-			<p><a href="login.html">已有账号？去登录</a></p>
+			<p><a href="/index.php/index/Logintel/login">已有账号？去登录</a></p>
 			<button class="btn-weixin"><img src="/static/img/weixin.png" alt=""><span>微信账号登录</span></button>
 		</div>
 	</form>
@@ -89,7 +89,7 @@
   		  dataType:'json',
   		  success: function(data){
   			  if(data.status==1){
-  				  alert('123');
+  				  alert('获取成功');
   			  }
   			  
   		  },

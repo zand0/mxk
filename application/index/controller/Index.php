@@ -11,22 +11,24 @@ class Index extends Controller
 	 * @ action 判断是否登录
 	 * @ Parameter 
 	 * @ return 
-	 * @ author laowen
-	 * @ date 16/07/05
+	 * @ author
+	 * @ date 
 	 */
     public function index(){
 
-    	// Session::set('userid', '1');
+        // Session::set('ruid','1');
+
+        $ruid = Session::get('ruid');
 
     		// 判断是否是登录状态
 
-    	if ( Session::get('userid') == '' ) {
+    	if ( $ruid == '' ) {
 
             $this->redirect('User/login'); die();
 
         }
 
-        $this->redirect('User/get_userinfo'); die();
+        $this->redirect('User/userPage'); die();
 
     }
     
