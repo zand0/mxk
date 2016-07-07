@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+		<title>账号设置</title>
+		<meta name="keywords" content="" />
+		<meta name="description" content="" />
+		<link href="/static/css/index.css" rel="stylesheet" type="text/css" />
+		<script src="/static/js/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/static/js/index.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<style>
+		#circle{width: 20%;position: absolute;top: 5vh;left:40%;color: #fff;text-align: center;}
+		.con{width: 80%;margin: 0 auto;margin: 5vh auto;overflow: hidden;}
+		.con .left{width: 40%;float: left;}
+		.con .left img{width:6vw;float: left;margin-right: 2vw;}
+		.con .left span{vertical-align:bottom;font-size: 2.5vh;}
+		.con .right{width: 60%;float: right;text-align: right;}
+		.con .right img{width:6vw;float: right;margin-left: 2vw;}
+		.con .right {vertical-align:bottom;font-size: 2.5vh;}
+		.clear{clear: both;}
+		.tb{margin-top:9vh;background-color: #fff;}
+		#tap-highlight{-webkit-tap-highlight-color:rgba(0,0,0,0);}
+	</style>
+	<body>
+		<div class="tp" id="main" style="min-width:300px!important; max-width:768px!important;  margin:auto; overflow:hidden;">
+			<div class="tp" style="margin: 0 auto">
+				<img src="/static/img/bluebanner.png" />
+				<p id="circle"><img src="/uploads/imgheader/{$userInfo['k_user_info']['UI_PHOTO']}" />修改头像</p>
+
+			</div>
+			<div class="con ">
+				<div class="left ">
+					<img src="/static/img/name.png" alt="" /><span>姓名</span>
+				</div>
+				<div class="right ">{$userInfo['k_user_info']['UI_NAME']}<img src="/static/img/right.png" alt="" /></div>
+			</div>
+			<div class="con ">
+				<div class="left ">
+					<img src="/static/img/pass.png" alt="" /><span>密码</span>
+				</div>
+				<div class="right ">
+					<input style="width:10vw;border:none;" type="password" value="******" />
+					<img class="clear" src="/static/img/right.png" alt="" />
+				</div>
+			</div>
+			<div class="con ">
+				<div class="left ">
+					<img src="/static/img/pho.png" alt="" />
+					<span>手机</span>
+				</div>
+				<div class="right ">
+					{eq name="userInfo['UR_PHONE']" value=""}
+						未绑定
+					{else/}
+						{$userInfo['UR_PHONE']}
+					{/eq}
+					<img src="/static/img/right.png" alt="" />
+				</div>
+			</div>
+			<div class="con ">
+				<div class="left ">
+					<img src="/static/img/e.png" alt="" />
+					<span>邮箱</span>
+				</div>
+				<div class="right ">
+
+					{eq name="userInfo['k_user_info']['UI_EMAIL']" value=""}
+						未绑定
+					{else/}
+						{$userInfo['k_user_info']['UI_EMAIL']}
+					{/eq}
+					
+					<img src="/static/img/right.png" alt="" />
+
+				</div>
+			</div>
+			<div class="con ">
+				<div class="left ">
+					<img src="/static/img/wx.png" alt="" /><span>微信</span>
+				</div>
+				<div class="right ">
+					{eq name="userInfo['k_user_wechat']['UWE_ACC']" value=""}
+						未绑定
+					{else/}
+						{$userInfo['k_user_wechat']['UWE_ACC']}
+					{/eq}
+					
+					<!-- // weixin2124 -->
+					<img src="/static/img/right.png" alt="" />
+				</div>
+			</div>
+			<div class="con ">
+				<div class="left ">
+					<img src="/static/img/resume.png" alt="" /><span>简历</span>
+				</div>
+				<div class="right ">未完善<img src="/static/img/right.png" alt="" /></div>
+			</div>
+			<div class="con ">
+				<div class="left ">
+					<img src="/static/img/fujian.png" alt="" /><span>附件简历</span>
+				</div>
+				<div class="right "><input type="file" style="width:35vh;margin-left: -3vh"></input></div>
+			</div>
+
+			<div class="tp tb clear" >
+				<ul class="footer_bottom" style="margin: 0 auto;">
+					<a id="tap-highlight" href="mymoney.html"><img style="width:32%;display: inline-block;" src="/static/img/money1.png" ontouchstart="this.src='/static/img/money3.png'" ontouchend="this.src='/static/img/money1.png'"/></a>
+					<a id="tap-highlight" href="recommend.html"><img style="width:32%;display: inline-block;" src="/static/img/p1.png" ontouchstart="this.src='/static/img/p3.png'" ontouchend="this.src='/static/img/p1.png'" /></a>
+					<a href="{:Url('User/userAccount')}"><img style="width:32%;display: inline-block;" src="/static/img/set1.png" ontouchstart="this.src='/static/img/set3.png'" ontouchend="this.src='/static/img/set1.png'" /></a>
+				</ul>
+			</div>
+		</div>
+	</body>
+	<script>
+	
+	
+	</script>
+</html>

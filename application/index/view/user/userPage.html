@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+		<title>个人中心</title>
+		<meta name="keywords" content="" />
+		<meta name="description" content="" />
+		<link href="/static/css/index.css" rel="stylesheet" type="text/css" />
+		<script src="/static/js/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/static/js/index.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<style>
+		.mainlist{width: 100%}
+		.competeing p{color: #fff;margin-left: 10vw;width:23vw;}
+		.competeing .success,.now{text-align: right}
+		.piapij{float: right;color: #fff;}
+		.name{font-size: 3vh}
+		.name img{width:5vw;display: inline-block;}
+		.num{font-size: 4vh}
+		.piapij .num{margin-top: 4vh}
+		.piapij .num,.can{margin-left: 6vw}
+		.Zambiahand{margin-top: 4vh;margin-left: 7vw}
+		.Zambiahand img{width:6vw;display: inline-block;}
+		.Zambiahand span{margin-left:2vw;font-size: 3vh;vertical-align: middle}
+		.newtext a {text-decoration: none;color: #999;font-size: 2vh;}
+		.newtext{margin: 5% 0% 4% 7%;}
+	</style>
+	<body>
+		<div class="tp" id="main" style="min-width:300px!important; max-width:768px!important;  margin:auto; overflow:hidden;">
+			<div class="tp">
+				<img src="/static/img/mainbbar.png" />
+				<a class="tg mainname">我的小空</a>
+				<ul class="tg mainlist">
+					<!-- <li class="lf competeing"><img src="/static/img/competeing.png" /></li> -->
+					<li class="lf competeing">
+						<p class="num">20</p>
+						<p class="success" >成功推荐职位</p>
+						<hr />
+						<p class="now">正在推进职位</p>
+						<p class="num">5</p>
+					</li>
+					<li class="lf cirzam">
+						<dl>
+							<!-- 头像 -->
+							
+							<dt class="circle"><img src="/uploads/imgheader/{$userInfo['UI_PHOTO']}" onerror="/static/img/circle.png"/></dt>
+							<!-- <dt class="circle"><img src="/static/img/circle.png" /></dt> -->
+							<dd class="Zambiahand">
+								<p><img src="/static/img/zan.png" /><span>2</span></p>
+							</dd>
+
+						</dl>
+					</li>
+					<li class="lf piapij">
+						<!-- 姓名 -->
+						<p class="name">{$userInfo['UI_NAME']}&nbsp;<img src="/static/img/pen.png" alt="" /></p>
+						<hr />
+						<p class="num ">20</p>
+						<p class="can">今日可推荐职位数</p>
+						<hr class="can" />
+					</li>
+				</ul>
+				
+			</div>
+			<a href="newjob.html" class="tg recommend"><img style="width:80%;margin-top:2vh;: " src="/static/img/recommend.png" /></a>
+			<div class="tp tb">
+				<div class="newtext"><a href="newjob.html">最新消息</a></div>
+				<ul>
+					<li class="tp pencil_a"><img src="/static/img/pencil_a.jpg" />
+						<div class="tg pencil_text">
+							<p>{$system['UME_DESC']}</p>
+							<p class="pencil_text_data_onmath">{$system['UME_CRE_TIME']}</p>
+						</div>
+					</li>
+					<li class="tp pencil_b"><img src="/static/img/pencil_b.jpg" />
+						<div class="tg pencil_text owmath">
+							<p><span>马占山</span>&nbsp;推荐我参加 金宝汇公司——电话销售</p>
+							<p>职位的面试。—————————<a>《查看详情》</a></p>
+							<p class="pencil_text_data">2016/06/02</p>
+						</div>
+					</li>
+					<li class="tp pencil_c"><img src="/static/img/pencil_c.jpg" />
+						<div class="tg pencil_text">
+							<p><span>王晓红</span>&nbsp;拒绝了我的推荐&nbsp;<span>金宝汇公司——电话销售 </span></p>
+							<p>职位的面试。</p>
+							<p class="pencil_text_data">2016/06/02</p>
+						</div>
+					</li>
+					<li class="tp pencil_d"><img src="/static/img/pencil_d.jpg" />
+						<div class="tg pencil_text owmath">
+							<p><span>王晓红</span>&nbsp;拒绝了我的推荐&nbsp;<span>金宝汇公司——电话销售 </span></p>
+							<p>职位。</p>
+							<p class="pencil_text_data">2016/06/02</p>
+						</div>
+					</li>
+					<li class="tp pencil_e"><img src="/static/img/pencil_e.jpg" />
+						<div class="tg pencil_text">
+							<p>王晓红 拒绝了我的推荐 金宝汇公司——电话销</p>
+							<p>售 职位。</p>
+							<p class="pencil_text_data">2016/06/02</p>
+						</div>
+					</li>
+				</ul>
+				<a class="clickingrr">查看更多</a>
+			</div>
+			<div class="tp tb">
+				<ul class="footer_bottom" style="margin: 0 auto;">
+					<a class="money" href="mymoney.html">
+						<img style="width:32%;display: inline-block;" src="/static/img/money1.png" ontouchstart="this.src='/static/img/money3.png'" ontouchend="this.src='/static/img/money1.png'"/></a>
+					<a href="recommend.html">
+						<img style="width:32%;display: inline-block;" src="/static/img/p1.png" ontouchstart="this.src='/static/img/p3.png'" ontouchend="this.src='/static/img/p1.png'" /></a>
+					<a href="{:Url('User/userAccount')}">
+						<img style="width:32%;display: inline-block;" src="/static/img/set1.png" ontouchstart="this.src='/static/img/set3.png'" ontouchend="this.src='/static/img/set1.png'" /></a>
+				</ul>
+			</div>
+		</div>
+	</body>
+
+</html>
