@@ -8,6 +8,9 @@
 		<meta name="keywords" content="" />
 		<meta name="description" content="" />
 		<link href="/static/css/index.css" rel="stylesheet" type="text/css" />
+		<link href="/static/corpper/assets/css/bootstrap.min.css" rel="stylesheet">
+  		<link href="/static/corpper/dist/cropper.min.css" rel="stylesheet">
+  		<link href="/static/corpper/examples/crop-avatar/css/main.css" rel="stylesheet">
 		<script src="/static/js/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="/static/js/index.js" type="text/javascript" charset="utf-8"></script>
 	</head>
@@ -23,65 +26,140 @@
 		.clear{clear: both;}
 		.tb{margin-top:9vh;background-color: #fff;}
 		#tap-highlight{-webkit-tap-highlight-color:rgba(0,0,0,0);}
+		.touxImg {position:absolute;left:37vw;top:3vh;z-index:1;}
+		.toux {position:absolute;left:44vw;top:20vh;z-index:1;width: 92px;height: 92px;}
 	</style>
 	<body>
 		<div class="tp" id="main" style="min-width:300px!important; max-width:768px!important;  margin:auto; overflow:hidden;">
 			<div class="tp" style="margin: 0 auto">
 				<img src="/static/img/bluebanner.png" />
-				<p id="circle"><img src="/uploads/imgheader/{$userInfo['k_user_info']['UI_PHOTO']}" />修改头像</p>
+				<p id="circle">
 
+					<!-- 头像修改  start -->
+
+						<div class="container" id="crop-avatar" style="height: 0px;">
+						    <!-- Current avatar -->
+						    <div class="avatar-view" title="更改头像">
+						    <!-- {$url} -->
+						      <img onclick="openSelect()"  class="touxImg" style="width: 92px;height: 92px;" {eq name="url" value=""} src="/static/img/circle.png" {else/} src="/uploads/imgheader/{$url}" {/eq} alt="Avatar">
+						      <p class="toux" onclick="openSelect()">更改头像</p>
+						    </div>
+
+						    <!-- Cropping modal -->
+						    <div class="modal fade" id="avatar-modal" aria-hidden="true" aria-labelledby="avatar-modal-label" role="dialog" tabindex="-1">
+						      <div class="modal-dialog modal-lg">
+						        <div class="modal-content">
+						          <form class="avatar-form" action="upload_avatar" enctype="multipart/form-data" method="post">
+						            <div class="modal-header">
+						              <button class="close" data-dismiss="modal" type="button">&times;</button>
+						              <h4 class="modal-title" id="avatar-modal-label" onclick="openSelect()">选择头像</h4>
+						            </div>
+						            <div class="modal-body">
+						              <div class="avatar-body">
+
+						                <!-- 上传的图片数据 -->
+						                <div class="avatar-upload">
+						                  <input class="avatar-src" name="avatar_src" type="hidden">
+						                  <input class="avatar-data" name="avatar_data" type="hidden">
+						                  <!-- <label for="avatarInput">本地上传</label> -->
+						                  <input class="avatar-input" id="avatarInput" name="avatar_file" type="file" style="display: none">
+						                </div>
+
+						                <!-- 选择截取图片区 -->
+						                <div class="row">
+						                  <div class="col-md-12">
+						                    <div class="avatar-wrapper"></div>
+						                  </div>
+						                </div>
+										<!--提交图片-->
+						                <div class="row avatar-btns">
+						                  <div class="col-md-3">
+						                    <button class="btn btn-primary btn-block avatar-save" type="submit">确定</button>
+						                  </div>
+						                </div>
+						              </div>
+						            </div>
+						          </form>
+						        </div>
+						      </div>
+						    </div><!-- /.modal -->
+
+						    <!--加载状态-->
+						    <div class="loading" aria-label="Loading" role="img" tabindex="-1"></div>
+						  </div>
+                  &nbsp;  
+                  <!-- 头像修改 end -->
+
+				</p>
 			</div>
 			<div class="con ">
 				<div class="left ">
 					<img src="/static/img/name.png" alt="" /><span>姓名</span>
 				</div>
-				<div class="right ">{$userInfo['k_user_info']['UI_NAME']}<img src="/static/img/right.png" alt="" /></div>
+
+				<a href="{:Url('Userinfo/userReviseName')}?name={$userInfo['k_user_info']['UI_NAME']}">
+					<div class="right ">
+						{$userInfo['k_user_info']['UI_NAME']}
+						<img src="/static/img/right.png" alt="" />
+					</div>
+				</a>
+
 			</div>
 			<div class="con ">
 				<div class="left ">
 					<img src="/static/img/pass.png" alt="" /><span>密码</span>
 				</div>
-				<div class="right ">
-					<input style="width:10vw;border:none;" type="password" value="******" />
-					<img class="clear" src="/static/img/right.png" alt="" />
-				</div>
+				
+				<a href="{:Url('Userinfo/userRevisePwd')}">
+					<div class="right "><!-- <input style="width:10vw;border:none;" type="password" value="******" /> -->******<img class="clear" src="/static/img/right.png" alt="" /></div>
+				</a>
 			</div>
 			<div class="con ">
 				<div class="left ">
 					<img src="/static/img/pho.png" alt="" />
 					<span>手机</span>
 				</div>
-				<div class="right ">
-					{eq name="userInfo['UR_PHONE']" value=""}
-						未绑定
-					{else/}
-						{$userInfo['UR_PHONE']}
-					{/eq}
-					<img src="/static/img/right.png" alt="" />
-				</div>
+				
+				<a href="{:Url('Userinfo/userRevisePhone')}?phone={$userInfo['UR_PHONE']}">
+
+					<div class="right ">
+
+						{eq name="userInfo['UR_PHONE']" value=""}
+							未绑定
+						{else/}
+							{$userInfo['UR_PHONE']}
+						{/eq}
+
+						<img src="/static/img/right.png" alt="" />
+					</div>
+				</a>
+
 			</div>
 			<div class="con ">
 				<div class="left ">
 					<img src="/static/img/e.png" alt="" />
 					<span>邮箱</span>
 				</div>
-				<div class="right ">
+				<a href="{:Url('Userinfo/userReviseEmail')}?email={$userInfo['k_user_info']['UI_EMAIL']}">
+					<div class="right ">
 
-					{eq name="userInfo['k_user_info']['UI_EMAIL']" value=""}
-						未绑定
-					{else/}
-						{$userInfo['k_user_info']['UI_EMAIL']}
-					{/eq}
-					
-					<img src="/static/img/right.png" alt="" />
+						{eq name="userInfo['k_user_info']['UI_EMAIL']" value=""}
+							未绑定
+						{else/}
+							{$userInfo['k_user_info']['UI_EMAIL']}
+						{/eq}
+						
+						<img src="/static/img/right.png" alt="" />
 
-				</div>
+					</div>
+				</a>
 			</div>
 			<div class="con ">
 				<div class="left ">
 					<img src="/static/img/wx.png" alt="" /><span>微信</span>
 				</div>
 				<div class="right ">
+
 					{eq name="userInfo['k_user_wechat']['UWE_ACC']" value=""}
 						未绑定
 					{else/}
@@ -96,26 +174,38 @@
 				<div class="left ">
 					<img src="/static/img/resume.png" alt="" /><span>简历</span>
 				</div>
-				<div class="right ">未完善<img src="/static/img/right.png" alt="" /></div>
+				<a href="{:Url('Userinfo/userResumeDetail')}">
+					<div class="right ">未完善
+						<img src="/static/img/right.png" alt="" />
+					</div>
+				</a>
 			</div>
-			<div class="con ">
+			<!-- <div class="con ">
 				<div class="left ">
 					<img src="/static/img/fujian.png" alt="" /><span>附件简历</span>
 				</div>
 				<div class="right "><input type="file" style="width:35vh;margin-left: -3vh"></input></div>
-			</div>
+			</div> -->
 
 			<div class="tp tb clear" >
 				<ul class="footer_bottom" style="margin: 0 auto;">
-					<a id="tap-highlight" href="mymoney.html"><img style="width:32%;display: inline-block;" src="/static/img/money1.png" ontouchstart="this.src='/static/img/money3.png'" ontouchend="this.src='/static/img/money1.png'"/></a>
-					<a id="tap-highlight" href="recommend.html"><img style="width:32%;display: inline-block;" src="/static/img/p1.png" ontouchstart="this.src='/static/img/p3.png'" ontouchend="this.src='/static/img/p1.png'" /></a>
-					<a href="{:Url('User/userAccount')}"><img style="width:32%;display: inline-block;" src="/static/img/set1.png" ontouchstart="this.src='/static/img/set3.png'" ontouchend="this.src='/static/img/set1.png'" /></a>
+					<a id="tap-highlight" href="{:Url('User/userMoney')}">
+						<img style="width:32%;display: inline-block;" src="/static/img/money1.png" ontouchstart="this.src='/static/img/money3.png'" ontouchend="this.src='/static/img/money1.png'"/></a>
+					<a id="tap-highlight" href="{:Url('User/useFriend')}">
+						<img style="width:32%;display: inline-block;" src="/static/img/p1.png" ontouchstart="this.src='/static/img/p3.png'" ontouchend="this.src='/static/img/p1.png'" /></a>
+					<a href="{:Url('User/userAccount')}">
+						<img style="width:32%;display: inline-block;" src="/static/img/set1.png" ontouchstart="this.src='/static/img/set3.png'" ontouchend="this.src='/static/img/set1.png'" /></a>
 				</ul>
 			</div>
 		</div>
 	</body>
-	<script>
-	
-	
-	</script>
+	<script src="/static/corpper/assets/js/bootstrap.min.js"></script>
+  	<script src="/static/corpper/dist/cropper.min.js"></script>
+  	<script src="/static/corpper/examples/crop-avatar/js/main.js"></script>
+  	<script type="text/javascript">
+	  	function  openSelect()
+		{
+			$("#avatarInput").click();
+		}
+  	</script>
 </html>

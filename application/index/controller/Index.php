@@ -16,7 +16,7 @@ class Index extends Controller
 	 */
     public function index(){
 
-        // Session::set('ruid','1');
+        //Session::set('ruid','1');
 
         $ruid = Session::get('ruid');
 
@@ -24,7 +24,7 @@ class Index extends Controller
 
     	if ( $ruid == '' ) {
 
-            $this->redirect('User/login'); die();
+            $this->redirect('Loginpass/login'); die();
 
         }
 

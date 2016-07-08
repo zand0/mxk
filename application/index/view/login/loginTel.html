@@ -6,32 +6,35 @@
 	<title>验证码登录</title>
 	<link rel="stylesheet" href="/static/css/Normalize.css">
 	<link rel="stylesheet" href="/static/css/common.css">
-	<script type="text/javascript" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+	<script type="text/javascript" src="/static/js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="/static/js/userfunc.js"></script>
 	<!--[if lt IE 9]>
     <link href="./static/css/main.css" rel="stylesheet" />
     <script src="/Scripts/excanvas.compiled.js" type="text/javascript"></script>
     <![endif]-->
     <style>
     *{margin: 0;padding:0;font-family: "Microsoft YaHei";}
-	.opacity .container .icon1{width:80%;height:6vh;background:url('/static/img/tel.png') no-repeat 2% center;background-size:5vw auto;background-color: #fff;margin: 5vh 10%;border-radius: 0.5vh;}
+	.opacity .container .icon1{font-weight:bold;width:80%;height:6vh;background:url('/static/img/tel.png') no-repeat 2% center;background-size:5vw auto;background-color: #fff;margin: 5vh 10%;border-radius: 0.5vh;}
 	.opacity .container .icon1 .telephone{float:left;border:none;background:none;height:6vh;line-height:6vh;width:100%; text-indent:10%;font-size: 4vw;border-radius:  0.5vh;}
-	.opacity .container .icon2{width:80%;height:6vh;;margin: 5vh 10%;border-radius: 0.5vh;}
-	.opacity .container .icon2 .captaha{background:url('/static/img/email1.png') no-repeat 3% center;background-size:5vw auto;background-color:#fff;height:6vh;line-height:30px;width:60%; text-indent:16%;font-size: 4vw;border-radius: 0.5vh;}
-	.opacity .container .icon2 .num{width:35%;height:5.8vh;line-height:5.8vh;color:#ff9e04;font-size:4vw;background-color: #fff;display:block;float:right;display: inline-block;border-radius:  .2vh;}
-	.opacity .container .confirm{color: #fff;width:40%;margin: 5vh 35% 0 65%;}
-	.opacity .container .confirm a{color: #fff}
-	.opacity .container .confirm img{width: 4vh;}
-	.opacity .container .btn-login{width:80%;height:6.5vh;margin: 5vh 10%;background-color:#A1CE3D;font-size:5vw;text-align:center;color: #fff;border-radius: 0.5vh;line-height: 5vh;text-align: center;}
-	.opacity .container .btn-login span{float: right;margin-right:20px;line-height: 5vh;font-size:5vw;}
-	.opacity .container p{width: 40%;margin: 2vh 33%;}
+	.opacity .container .icon2{width:80%;height:6vh;margin: 5vh 10% 0px 10%;border-radius: 0.5vh;}
+	.opacity .container .icon2 .captaha{background:url('/static/img/email.png') no-repeat 3% center;background-size:5vw auto;background-color:#fff;height:6vh;line-height:30px;width:60%; text-indent:16%;font-size: 2.5vh;border-radius: 0.5vh;}
+	.opacity .container .icon2 .num{width:35%;height:6vh;line-height:6vh;color:#ff9e04;font-size:3.8vw;background-color: #fff;display:block;float:right;display: inline-block;border-radius:  .5vh;}
+	.opacity .container .confirm{color: #fff;width:40%;margin:2vh 25% 0 60%;}
+	.opacity .container .confirm a{color: #fff;vertical-align: super;display:inline-block;}
+	.opacity .container .confirm img{width: 2.5vh;}
+	.opacity .container .btn-login{width:80%;height:6.5vh;margin: 1.5vh 10% 2vh 10%;background-color:#A1CE3D;font-size:4vw;text-align:center;color: #fff;border-radius: 0.5vh;line-height: 5vh;text-align: center;}
+	.opacity .container .btn-login span{float: right;margin-right:20px;line-height: 5vh;font-size:4vw;}
+	.opacity .container .btn-login img{width:6%;}
+	.opacity .container p{width: 40%;margin: 1vh 33%;}
 	.opacity .container p a{color: #fff; font-size:3vw;}
-	.opacity .container .btn-weixin{border:none;width:80%;height:6.5vh;margin: 3vh 10% 10vh 10%;text-align:center;background-color:#2EB8EB;border-radius: 0.5vh;}
+	.opacity .container .btn-weixin{border:none;width:80%;height:6.5vh;margin:2vh 10% 0vh 10%;text-align:center;background-color:#2EB8EB;border-radius: 0.5vh;}
 	.opacity .container .btn-weixin img{width:4vh;margin-bottom: -1vh;}
 	.opacity .container .btn-weixin span{font-size:4vw;color: #fff;margin-left: 10px;line-height: 5vh;}
+	.btn-login img{float: right;margin-top:1vh;margin-right:1vh;width:3vh}
 	</style>
 </head>
 <body id="wrap" onload="init()">
-<form action="" method="post">
+<form id="form1" onsubmit="return false;" action="" method="post">
 	<div class="opacity">
 		<div class="container">
 			<img class="logo" src="/static/img/logo.png" alt="">	
@@ -48,9 +51,9 @@
 				<a style="vertical-align: super;display:inline-block;" href="/index.php/index/Loginpass/login">密码登录</a>
 			</div>
 			<input type="hidden" name="submit" value="1" />
-			<button onclick="this.submit()" class="btn-login">&nbsp;登录<img style="float: right;margin-top:1vh;margin-right:1vh;width:3vh" src="/static/img/right1.png" alt=""></button>
+			<button onclick="doSubmit(getElementById('form1').action);" class="btn-login">&nbsp;登录<img style="float: right;margin-top:1vh;margin-right:1vh;width:3vh" src="/static/img/right1.png" alt=""></button>
 			<p><a href="/index.php/index/regtel/reg">没有账号？去注册</a></p>
-			<button class="btn-weixin" onclick="javascript:window.location.href='weixin.html'"><img src="/static/img/weixin.png" alt=""><span>微信账号登录</span></button>
+			<button class="btn-weixin" onclick="location.href='/index.php/index/Regwechat'"><img src="/static/img/weixin.png" alt=""><span>微信账号登录</span></button>
 		</div>
 		
 	</div>	
@@ -96,6 +99,11 @@
   		  success: function(data){
   			  if(data.status==1){
   				  alert('获取成功');
+  			  }else{
+  				alert(data.msg);
+  				if(data.url){
+  					location.href=data.url;
+  				}
   			  }
   			  
   		  },
@@ -103,6 +111,13 @@
   			  alert('err');
   		  }
   		});
+    }
+    function doSubmit(url){
+    	var formdata = {};
+    	formdata.UR_PHONE = $('#phone').val();
+    	formdata.UC_CODE = $('#getCode').val();
+    	formdata.submit = 1;
+    	sendData(url,formdata);
     }
 </script>
 </html>

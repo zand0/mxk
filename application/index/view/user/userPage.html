@@ -35,17 +35,17 @@
 				<ul class="tg mainlist">
 					<!-- <li class="lf competeing"><img src="/static/img/competeing.png" /></li> -->
 					<li class="lf competeing">
-						<p class="num">20</p>
+						<p class="num">{$userMoney['TOT_REC']}</p>
 						<p class="success" >成功推荐职位</p>
 						<hr />
 						<p class="now">正在推进职位</p>
-						<p class="num">5</p>
+						<p class="num">{$userMoney['NOW_REC']}</p>
 					</li>
 					<li class="lf cirzam">
 						<dl>
 							<!-- 头像 -->
 							
-							<dt class="circle"><img src="/uploads/imgheader/{$userInfo['UI_PHOTO']}" onerror="/static/img/circle.png"/></dt>
+							<dt class="circle"><img src="/uploads/imgheader/{$userInfo['UI_PHOTO']}" onerror="" style="border-radius:50%" /></dt>
 							<!-- <dt class="circle"><img src="/static/img/circle.png" /></dt> -->
 							<dd class="Zambiahand">
 								<p><img src="/static/img/zan.png" /><span>2</span></p>
@@ -75,13 +75,56 @@
 						</div>
 					</li>
 					<li class="tp pencil_b"><img src="/static/img/pencil_b.jpg" />
+
+						<div class="tg pencil_text owmath">
+							<p><span>{$recommendMe['recommendMe']['UI_NAME']}</span>&nbsp;推荐我参加 {$recommendMe['companyName']}——{$recommendMe['jobName']}</p>
+							<p>职位的面试。————————— &nbsp; <a href="">《查看详情》</a></p>
+							<p class="pencil_text_data">{$recommendMe['UME_CRE_TIME']}</p>
+						</div>
+
+						<!-- 
 						<div class="tg pencil_text owmath">
 							<p><span>马占山</span>&nbsp;推荐我参加 金宝汇公司——电话销售</p>
 							<p>职位的面试。—————————<a>《查看详情》</a></p>
 							<p class="pencil_text_data">2016/06/02</p>
-						</div>
+						</div> 
+						-->
+
 					</li>
-					<li class="tp pencil_c"><img src="/static/img/pencil_c.jpg" />
+					
+
+					{volist name="myRecommend" id="data"}
+
+						<li class="tp pencil_c">
+
+							{switch name="key"}
+							    {case value="0"}<img src="/static/img/pencil_c.jpg" />{/case}
+							    {case value="1"}<img src="/static/img/pencil_d.jpg" />{/case}
+							    {case value="2"}<img src="/static/img/pencil_e.jpg" />{/case}
+							{/switch}							
+
+							<div class="tg pencil_text owmath">
+
+								<p><span>{$data.myRecommend.UI_NAME}</span>&nbsp;
+
+									{switch name="data['UME_STATE']"}
+									    {case value="0"}拒绝{/case}
+									    {case value="1"}同意{/case}
+									{/switch}
+
+									了我的推荐&nbsp;
+
+									<span>{$data.companyName}——{$data.jobName}</span></p><p>职位。</p>
+
+								<p class="pencil_text_data">{$data.UME_CRE_TIME}</p>
+
+							</div>
+
+						</li>
+
+			      	{/volist}
+
+					<!-- <li class="tp pencil_c"><img src="/static/img/pencil_c.jpg" />
 						<div class="tg pencil_text">
 							<p><span>王晓红</span>&nbsp;拒绝了我的推荐&nbsp;<span>金宝汇公司——电话销售 </span></p>
 							<p>职位的面试。</p>
@@ -101,15 +144,15 @@
 							<p>售 职位。</p>
 							<p class="pencil_text_data">2016/06/02</p>
 						</div>
-					</li>
+					</li> -->
 				</ul>
 				<a class="clickingrr">查看更多</a>
 			</div>
 			<div class="tp tb">
 				<ul class="footer_bottom" style="margin: 0 auto;">
-					<a class="money" href="mymoney.html">
+					<a class="money" href="{:Url('User/userMoney')}">
 						<img style="width:32%;display: inline-block;" src="/static/img/money1.png" ontouchstart="this.src='/static/img/money3.png'" ontouchend="this.src='/static/img/money1.png'"/></a>
-					<a href="recommend.html">
+					<a href="{:Url('User/useFriend')}">
 						<img style="width:32%;display: inline-block;" src="/static/img/p1.png" ontouchstart="this.src='/static/img/p3.png'" ontouchend="this.src='/static/img/p1.png'" /></a>
 					<a href="{:Url('User/userAccount')}">
 						<img style="width:32%;display: inline-block;" src="/static/img/set1.png" ontouchstart="this.src='/static/img/set3.png'" ontouchend="this.src='/static/img/set1.png'" /></a>

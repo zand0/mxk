@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+		<title>我的简历--基本信息</title>
+		<meta name="keywords" content="" />
+		<meta name="description" content="" />
+		<link href="/static/css/index.css" rel="stylesheet" type="text/css" />
+		<script src="/static/js/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/static/js/index.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<style>
+		*{text-decoration: none;padding: 0;margin: 0;font-family: "Microsoft YaHei";}
+		hr{background-color: #ccc; margin:5% auto;*margin: 0;border: 0;height: 0.33px}
+		.message{text-align: center;font-size: 1.5em;margin:6% auto 4%;}
+		.text a{margin-left: 10%;font-size: 1em;text-decoration:none;color: #000}
+		.text a img{width: 6%;float: right;margin-right: 10px;}
+		.tb{background-color: #fff;}
+		.save{width: 36%;height:30px;line-height:30px;color:#fff;background-color: #1BB2E9;text-align: center;margin:0 auto 10% auto;border-radius: 3px;}
+		input{width: 64vw;border: none;}
+	</style>
+	<body>
+		<div class="tp" id="main" style="min-width:300px!important; max-width:768px!important;  margin:auto; overflow:hidden;">
+			<!-- <img src="/static/img/title.png" alt="" /> -->
+			<img src="/static/img/resumebanner.png" class="banner"></img>
+
+			<p class="message">基本信息</p>
+			<hr />
+			<div class="text">
+				<a href="">姓名<input type="text" /><img src="/static/img/right.png" alt="" /></a>	
+			</div>
+			<hr />
+			<div class="text">
+				<a href="">性别<input type="text" /><img src="/static/img/right.png" alt="" /></a>	
+			</div>
+			<hr />
+			<div class="text">
+				<a href="">联系电话<input type="text" /><img src="/static/img/right.png" alt="" /></a>	
+			</div>
+			<hr />
+			<div class="text">
+				<a href="">联系邮箱<input type="text" /><img src="/static/img/right.png" alt="" /></a>	
+			</div>
+			<hr />
+			<div class="text">
+				<a href="">所在城市<input type="text" /><img src="/static/img/right.png" alt="" /></a>	
+			</div>
+			<hr />
+			<div class="text">
+				<a href="">学历<input type="text" /><img src="/static/img/right.png" alt="" /></a>	
+			</div>
+			<hr />
+			<div class="save">保存并返回</div>
+			<hr />
+			<div class="tp tb">
+				<ul class="footer_bottom" style="margin: 0 auto;">
+					<a class="money" href="{:Url('User/userMoney')}">
+						<img style="width:32%;display: inline-block;" src="/static/img/money1.png" ontouchstart="this.src='/static/img/money3.png'" ontouchend="this.src='/static/img/money1.png'"/></a>
+					<a href="{:Url('User/useFriend')}">
+						<img style="width:32%;display: inline-block;" src="/static/img/p1.png" ontouchstart="this.src='/static/img/p3.png'" ontouchend="this.src='/static/img/p1.png'" /></a>
+					<a href="{:Url('User/userAccount')}">
+						<img style="width:32%;display: inline-block;" src="/static/img/set2.png" ontouchstart="this.src='/static/img/set3.png'" ontouchend="this.src='/static/img/set1.png'" /></a>
+				</ul>
+			</div>
+		</div>
+	</body>
+
+</html>

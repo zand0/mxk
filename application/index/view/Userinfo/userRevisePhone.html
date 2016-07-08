@@ -1,0 +1,139 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+		<title>修改-手机号</title>
+		<meta name="keywords" content="" />
+		<meta name="description" content="" />
+		<link href="/static/css/index.css" rel="stylesheet" type="text/css" />
+		<script src="/static/js/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/static/js/index.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<style>
+		*{text-decoration: none;padding: 0;margin: 0;font-family: "Microsoft YaHei";}
+		
+		.oldTel{margin: 5vh auto;text-align: center;font-size: 3vh;color: #a7a6a6}
+		.oldTel .now{font-size: 2.5vh}
+		.icon1{font-weight:bold;width:80%;height:6vh;background:url('/static/img/tel.png') no-repeat 2% center;background-size:5vw auto;background-color: #eee;margin: 5vh 10%;border-radius: 0.5vh;}
+		.icon1 .telephone{float:left;border:none;background:none;height:6vh;line-height:6vh;width:100%; text-indent:10%;font-size: 4vw;border-radius:  0.5vh;}
+		.icon2{width:80%;height:6vh;margin: 3vh 10% 0px 10%;border-radius: 0.5vh;}
+		.icon2 .captaha{background:url('/static/img/email.png') no-repeat 3% center;background-size:5vw auto;background-color:#eee;height:6vh;line-height:30px;width:60%; text-indent:16%;font-size: 2.5vh;border-radius: 0.5vh;border:none;}
+		.icon2 .num{width:35%;height:6vh;line-height:6vh;color:#a7a6a6;font-size:3.8vw;background-color: #eee;display:block;float:right;display: inline-block;border-radius:  .5vh;}
+		.btn{width:90%;height:6vh;border-radius:1vw;margin: 0 auto;color:#fff;background-color: #1bb2e9;text-align: center;line-height:6vh;font-size: 3vh;margin-top:35vh;}
+	</style>
+	<body>
+		<div class="tp" id="main" style="min-width:300px!important; max-width:768px!important;  margin:auto; overflow:hidden;">
+			<!-- <img src="/static/img/title.png" alt="" /> -->
+			<img src="/static/img/reviseTel.png" class="banner"></img>
+			<div class="oldTel">
+				<p class="now">当前手机号</p>
+				<p>{$phone}</p>
+			</div>
+			<div class="icon1">
+				<input type="hidden" id="oldphone" value={$phone}>
+				<input type="tel" id="phone" class="telephone" placeholder="&nbsp;请输入新手机号">
+			</div>
+			<div class="icon2">
+				<input type="text" class="captaha" id="captaha" placeholder="&nbsp;请输入验证码">	
+				<div class="num" onclick="checkPhone()">&nbsp;&nbsp;获取验证码</div>
+			</div>
+			<div class="btn" onclick="checkall()">完成</div>
+		</div>
+	</body>
+
+</html>
+
+<script type="text/javascript">
+
+			// 确认修改
+
+		function checkall(){
+
+			var phone = document.getElementById('phone').value;
+
+			var captaha = document.getElementById('captaha').value;
+
+			var oldphone = document.getElementById('oldphone').value;
+
+			if ( !phone ) { alert('请输入手机号！'); return; };
+
+			if ( !phone.match(/^(((13[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/)) {
+
+        		alert("手机号码格式不正确!"); return false;
+
+        	};
+
+			if ( !captaha ) { alert('请输入验证码！'); return; };
+
+			var ajax = new XMLHttpRequest ();
+
+			ajax.open('post',"{:Url('Userinfo/userRevisePhone?type=ok')}",true);
+
+			ajax.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+			ajax.send('phone='+phone+'&captaha='+captaha+'&oldphone='+oldphone);
+
+			ajax.onreadystatechange = function () {
+
+				if ( ajax.readyState==4 && ajax.status==200 ) {
+
+					// alert(ajax.responseText);
+
+					if ( ajax.responseText == '修改失败！请稍后重试！') { alert('修改失败！请稍后重试！'); return false; };
+
+					if ( ajax.responseText == '验证码有误') { alert('验证码有误'); return false; };
+
+					if ( ajax.responseText == '手机号存在问题，请重试！') { alert('手机号存在问题，请重试！'); return false; };
+
+					alert('修改成功！'); location.href="{:Url('User/userAccount')}"; return true;
+
+				}
+
+			}
+
+		}
+
+			// 验证手机号，发送验证码
+
+		function checkPhone(){
+
+			var oldphone = document.getElementById('oldphone').value;
+
+			var phone = document.getElementById('phone').value;
+
+			if ( !phone ) { alert('请输入手机号！'); return; };
+
+			if ( !phone.match(/^(((13[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/)) {
+
+        		alert("手机号码格式不正确!"); return false;
+
+        	};
+
+			if ( oldphone == phone ) { alert('与旧手机号一致,请重新输入手机号！'); return; };
+
+			var ajax = new XMLHttpRequest ();
+
+			ajax.open('post',"{:Url('Userinfo/userRevisePhone?type=getcode')}",true);
+
+			ajax.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+			ajax.send('phone='+phone);
+
+			ajax.onreadystatechange = function () {
+
+				if ( ajax.readyState==4 && ajax.status==200 ) {
+
+					if ( ajax.responseText == '该手机号已被使用！请重新输入！') { alert(ajax.responseText);  return false; };
+
+					if ( ajax.responseText == '手机号存在问题，请重试！') { alert(ajax.responseText); return false; };
+
+					return;				
+
+				}
+
+			}
+
+		}
+
+	</script>

@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+		<title>我的简历</title>
+		<meta name="keywords" content="" />
+		<meta name="description" content="" />
+		<link href="/static/css/index.css" rel="stylesheet" type="text/css" />
+		<script src="/static/js/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/static/js/index.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<style>
+		*{text-decoration: none;padding: 0;margin: 0;font-family: "Microsoft YaHei";}
+		.message{text-align: center;font-size: 1.5em;margin:6% auto 4%;}
+		.text{margin-top: 10%;margin-left: 10%}
+		.text a{font-size: 1em;text-decoration: none;color: #000}
+		.text a img{width: 6%;float: right;margin-right: 10px;}
+		.text a .pic{float:left;}
+		.save1{border:1px solid #1BB2E9;width: 30%;height:30px;line-height:30px;color:#fff;background-color: #1BB2E9;text-align: center;margin:10% 5% 10% auto;border-radius: 3px;}
+		.save2{width: 30%;height:30px;line-height:30px;color:#1BB2E9;border:1px solid #1BB2E9;text-align: center;margin:10% 5% 10% auto;border-radius: 3px;}
+		.clear{clear: both;}
+		.tb{background-color: #fff;}
+		hr{background-color: #eee; margin:5% auto;width:90%;}
+	</style>
+	<body>
+		<div class="tp" id="main" style="min-width:300px!important; max-width:768px!important;  margin:auto; overflow:hidden;">
+			<!-- <img src="/static/img/title.png" alt="" /> -->
+			<img src="/static/img/resumebanner.png" class="banner"></img>
+			<div class="text">
+				<a href="{:Url('Userinfo/userInfo')}"><img class="clear pic" src="/static/img/resume-msg.jpg" alt="" />基本信息<img src="/static/img/right.png" alt="" /></a>
+			</div>
+			<hr />
+			<div class="text">
+				<a href="{:Url('Userinfo/userWorkInfo')}"><img class="clear pic" src="/static/img/resume-work.jpg" alt="" />工作经历<img src="/static/img/right.png" alt="" /></a>
+			</div>
+			<hr />
+			<div class="text">
+				<a href="{:Url('Userinfo/userEduInfo')}"><img class="clear pic" src="/static/img/resume-jy.jpg" alt="" />教育经历<img src="/static/img/right.png" alt="" /></a>
+			</div>
+			<hr />
+			<div class="text">
+				<a href="{:Url('Userinfo/userWantWork')}"><img class="clear pic" src="/static/img/resume-hope.jpg" alt="" />期望工作<img src="/static/img/right.png" alt="" /></a>
+			</div>
+			<hr />
+			<div class="text">
+				<a href="{:Url('Userinfo/userProject')}"><img class="clear pic" src="/static/img/resume-pro.jpg" alt="" />项目经验<img src="/static/img/right.png" alt="" /></a>
+			</div>
+			<hr />
+			<div class="text">
+				<a href="">
+					<img class="clear pic" src="/static/img/resume-des.png" alt="" />自我描述<img src="/static/img/right.png" alt="" /></a>
+			</div>
+			<hr />
+			<div class="save1 " style="float: left;margin-left: 17%;">预览</div>
+			<div class="save2 " style="float: left;">下载</div>
+			
+			<div class="tp tb clear">
+				<ul class="footer_bottom" style="margin: 0 auto;">
+					<a class="money" href="{:Url('User/userMoney')}">
+						<img style="width:32%;display: inline-block;" src="/static/img/money1.png" ontouchstart="this.src='/static/img/money3.png'" ontouchend="this.src='/static/img/money1.png'"/></a>
+					<a href="{:Url('User/useFriend')}">
+						<img style="width:32%;display: inline-block;" src="/static/img/p1.png" ontouchstart="this.src='/static/img/p3.png'" ontouchend="this.src='/static/img/p1.png'" /></a>
+					<a href="{:Url('User/userAccount')}">
+						<img style="width:32%;display: inline-block;" src="/static/img/set2.png" ontouchstart="this.src='/static/img/set3.png'" ontouchend="this.src='/static/img/set1.png'" /></a>
+				</ul>
+			</div>
+		</div>
+	</body>
+
+</html>

@@ -180,5 +180,71 @@ class UserReginfo
         }*/
     }
 
-}
 
+
+    /**
+     * @ action 验证手机号是否已使用
+     * @ Parameter 手机号
+     * @ return 返回
+     * @ author laowen
+     * @ date 16/07/07
+     */
+
+    public function R_byPhone($phone){
+
+        $data = $this->_m->where( 'UR_PHONE',$phone )->value('UR_PHONE');
+
+        if ( !$data ) { return 'ok'; die(); };
+
+        return "该手机号已被使用！请重新输入！"; die();
+
+    }
+
+    /**
+     * @ action 修改手机号
+     * @ Parameter 参数
+     * @ return 返回 数组array()
+     * @ author laowen
+     * @ date 16/07/07
+     */
+    
+    public function U_byPhone(){
+
+        $phone = input('post.phone');
+
+        if ( $phone=='' ) { return '手机号存在问题，请重试！'; die(); };
+
+        if ( !preg_match("/^(((13[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/", $phone)) { return "手机号存在问题，请重试！";die(); }
+
+        $verify = input('post.captaha');
+
+        if ( $verify=='' ) { return '验证码有误'; die(); };
+
+        $oldphone = input('post.oldphone');
+
+        if ( $oldphone =='' ) { return '手机号存在问题，请重试！'; die(); };
+
+        if ( !preg_match("/^(((13[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/", $oldphone)) { return "手机号存在问题，请重试！";die(); }
+
+        $verify_o = Session::get( $phone.'verify');
+
+        if ( $verify != $verify_o ) { return '验证码有误'; die(); };
+
+            // 修改手机号
+
+        return $this->_m->where( 'UR_PHONE',$oldphone)->update([ 'UR_PHONE'=>$phone ]);
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+}

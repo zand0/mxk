@@ -23,21 +23,25 @@ class Reginfo extends Controller
     		/*if(!$uname || !$pass){
     			return $this->error('用户名或密码不得为空！','/index.php/index/Login/login');
     		}*/
-    	    $validate = new vUserReginfo;
+    	    /*$validate = new vUserReginfo;
     	    if(!$validate->check($post,[],'reginfo')){
     	        // 验证失败 输出错误信息
-    	        return $this->error($validate->getError());
-    	    }
+    	        return json(['status'=>0,'msg'=>$validate->getError(),'url'=>'']);
+    	        //return $this->error($validate->getError());
+    	    }*/
 	    	//实例化logic层的User
 	    	$ui_logic = new lgUserInfo;
 	    	try {
 	    	    if($ui_logic->C_regInfo($post)){
-	    	        return $this->success('注册成功','/index.php/index/Login/ucenter');
+	    	        return json(['status'=>0,'msg'=>'保存成功','url'=>'/index.php']);
+	    	        //return $this->success('保存成功','/index.php');
 	    	    }else{
-	    	        return $this->error('注册失败','/index.php/index/Register/reg');
+	    	        return json(['status'=>0,'msg'=>'保存失败','url'=>'']);
+	    	        //return $this->error('保存失败');
 	    	    }
 	    	} catch (\Exception $e) {
-	    	    return $this->error($e->getMessage());
+	    	    return json(['status'=>0,'msg'=>$e->getMessage(),'url'=>'']);
+	    	    //return $this->error($e->getMessage());
 	    	}
 	    	
     	}

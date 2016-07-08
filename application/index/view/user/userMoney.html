@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <title>我的佣金</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <script src="/static/js/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/static/js/index.js" type="text/javascript" charset="utf-8"></script>
+<style>
+        @charset "utf-8";
+    body,ul,li,p,img,div,dl,dt,dd {margin: 0;padding: 0;list-style: none;border: none;}
+    body {font: 12px "microsoft yahei", Arial, Helvetica, sans-serif;color: #666;margin: 0px;padding: 0px;}
+    *{text-decoration: none;padding: 0;margin: 0;font-family: "Microsoft YaHei";}
+    img {border: none;vertical-align: middle;width: 100%;}
+    li {list-style: none;}
+    a {cursor: pointer;text-decoration: none;color: #666}
+    .lf {float: left;}
+    .tp {position: relative;overflow: hidden;}
+    .tg {position: absolute;}
+    /**contenting**/
+    .mainname {top: 4%;left: 37.5%;font-size: 0.35rem;color: #fff;}
+    .mainlist {top: 22%;left: 0%;}
+    .competeing {width: 36%;margin-top: 4%;}
+    .cirzam {width: 23%;margin-left: 2%;}
+    .piapij {width: 34%;}
+    .tip1{width: 40%;height: 4px;background-color: #1bb2e9;margin-left:5%;margin-top:10px;float: left;}
+    .tip2{width: 40%;height: 4px;background-color: #d8d8d8;margin-right:5%;margin-top:10px;float: right;}
+    .recommendhe{width: 50%;text-align: center;display: inline-block;margin-top:10px;font-size: 4vh}
+    .recommendme{width: 50%;text-align: center;display: inline-block;float: right;margin-top:10px;color:#999;font-size: 4vh;}
+    .all{width: 95%;height: 30px;background-color: #1bb2e9;color: #fff;text-align: center;line-height: 30px;border-radius: 3px;}
+    .block{width: 95%;margin: 4% auto;border:1px solid #ccc;height:80px;border-radius: 3px;}
+    table{width: 98%;margin-left: 2%;}
+    td{width: 30%;}
+    .name{font-size: 1.5em}
+    .con1{width:20%;float: left;}
+    .con2{width:20%;float: left;}
+    .left{text-align: right}
+    .clear{clear: both;} 
+    .scon2{display: none;}
+    .sli1 .sli2{width: 50%;}
+    .att{text-align: right}
+    .know{color: #FCAA54;}
+    #navigation ul li{color: #fff;background-color:#1bb2e9;width:95%;margin: 0 auto;line-height:4vh;border-radius:0.5vh;font-size: 2vh}
+    #navigation ul li a{color: #fff;}
+    #navigation ul li ul li{width: 100%;border-bottom: 1px solid #ccc}
+    #navigation-me ul li{color: #fff;background-color:orange;width:95%;margin: 0 auto;line-height:4vh;border-radius:0.5vh;font-size: 2vh}
+    #navigation-me ul li a{color: #fff;}
+    #navigation-me ul li ul li{width: 100%;border-bottom: 1px solid #ccc}
+    .mainlist{width: 100%}
+    .competeing p{color: #fff;margin-left: 10vw;width:23vw;}
+    .piapij{float: right;color: #fff;}
+    .name{font-size: 3vh}
+    .name img{width:5vw;display: inline-block;}
+    .num{font-size: 4vh}
+    .piapij .num{margin-top: 3vh}
+    .piapij .num,.can{margin-left: 6vw}
+    .Zambiahand{margin-top: 4vh;margin-left: 7vw}
+    .Zambiahand img{width:6vw;display: inline-block;}
+    .Zambiahand span{margin-left:2vw;font-size: 3vh;vertical-align: middle}
+    .ta{border-bottom: 1px solid #ccc }
+    </style>
+    <script>
+         function show(n){
+                var showid = $(n).index();
+                $(".scon-wap #scon1").hide(); 
+                $(".scon-wap #scon2").hide();
+                
+                $('.scon'+showid).show();
+                if(showid == 1){
+                     $(".recommendhe").css("border-color","#1bb2e9");
+                     $(".recommendme").css("border-color","#ccc");  
+                }else{
+                     $(".recommendme").css("border-color","#FCAA54");
+                     $(".recommendhe").css("border-color","#ccc");  
+                } 
+
+            }
+
+    </script>
+    <body>
+    <div class="tp" id="main" style="min-width:300px!important; max-width:768px!important;  margin:auto; overflow:hidden;">
+            <div class="tp">
+                <img src="/static/img/mainbar.png" />
+                <a class="tg mainname">我的小空</a>
+                <ul class="tg mainlist">
+                    <li class="lf competeing">
+                        <p class="num"> {$userMoney['UM_FINMONEY']} <span style="font-size: 1vh;">￥</span></p>
+                        <p class="success" >已结算</p>
+                        <hr />
+                        <p class="now">结算中</p>
+                        <p class="num"> {$userMoney['UM_GOMONEY']} <span style="font-size: 1vh;">￥</span></p>
+                    </li>
+                    <li class="lf cirzam">
+                        <!-- 头像 -->
+                        <dl>
+                            <dt class="circle">
+                                <img src="/uploads/imgheader/{$userInfo['UI_PHOTO']}" style="border-radius:50%" onerror=""/>
+                                <!-- <img src="/static/img/circle.png" /> -->
+                            </dt>
+                            
+                        </dl>
+                    </li>
+                    <li class="lf piapij">
+                        <p class="name">{$userInfo['UI_NAME']}&nbsp;<img src="/static/img/pen.png" alt="" /></p>
+                        <hr />
+                        <p class="num "> {$userMoney['UM_CANMONEY']} <span style="font-size: 1vh;">￥</span></p>
+                        <p class="can">可结算</p>
+                        <hr class="can" />
+                    </li>
+                </ul>
+            </div>
+     
+        <span onclick="show(this)" style="border-top: 5px solid #1bb2e9;padding:1vh;width: 40%;margin-left:2.5%" class="recommendhe">推荐TA</span>
+        <span onclick="show(this)" style="border-top: 5px solid #ccc;padding:1vh;width: 40%;margin-right:2.5%" class="recommendme">推荐我</span>
+       
+        <div class="clear"></div>
+        <div class="scon-wap">
+            <div id="scon1" class="scon1">
+                <div id="navigation" style="text-align: center;" >
+                    <ul>
+                        <li class="ta" style="">全 部
+                            <ul style="display: none;">
+                                <li><a href="">推荐中</a></li>
+                                <li><a href="">面试中</a></li>
+                                <li><a href="">认证中</a></li>
+                                <li><a href="">审核中</a></li>
+                                <li><a href="">结算中</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+                <div class="block">
+                    <table>
+                        <tr>
+                            <td class="name" colspan="2">王磊</td>
+                            <td class="left">今天</td>
+                        </tr>
+                        <tr>
+                            <td> <img class="con1" src="/static/img/gr.jpg" alt="" />电话销售</td>
+                            <td><img class="con1" src="/static/img/home.jpg" alt="" />小米科技</td>
+                            <td><img class="con1" src="/static/img/phone.jpg" alt="" />136****2123</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><a href="service.html"><img class="con2" style="width:10%;float: left;" src="/static/img/sever.jpg" alt="" />联系客服</a></td> 
+                            <td>当前状态：未认证</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="block">
+                    <table>
+                        <tr>
+                            <td class="name" colspan="2">赵天宝</td>
+                            <td class="left">2016/06/13</td>
+                        </tr>
+                        <tr>
+                            <td> <img class="con1" src="/static/img/gr.jpg" alt="" />电话销售</td>
+                            <td><img class="con1" src="/static/img/home.jpg" alt="" />小米科技</td>
+                            <td><img class="con1" src="/static/img/phone.jpg" alt="" />136****2123</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><a href="service.html"><img class="con2" style="width:10%;float: left;" src="/static/img/sever.jpg" alt="" />联系客服</a></td> 
+                            <td>当前状态：未认证</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="block">
+                    <table>
+                        <tr>
+                            <td class="name" colspan="2">汪峰</td>
+                            <td class="left">2016/06/10</td>
+                        </tr>
+                        <tr>
+                            <td> <img class="con1" src="/static/img/gr.jpg" alt="" />电话销售</td>
+                            <td><img class="con1" src="/static/img/home.jpg" alt="" />小米科技</td>
+                            <td><img class="con1" src="/static/img/phone.jpg" alt="" />136****2123</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><a href="service.html"><img class="con2" style="width:10%;float: left;" src="/static/img/sever.jpg" alt="" />联系客服</a></td> 
+                            <td>当前状态：未认证</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div id="scon2" class="scon2">
+                <div id="navigation-me" style=" text-align: center;" >
+                    <ul>
+                        <li>全 部
+                            <ul style="display: none;">
+                                <li><a href="">推荐中</a></li>
+                                <li><a href="">面试中</a></li>
+                                <li><a href="">认证中</a></li>
+                                <li><a href="">审核中</a></li>
+                                <li><a href="">结算中</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="block">
+                    <table>
+                        <tr>
+                            <td class="name" colspan="2">电话销售</td>
+                            <td class="left">2016/06/13</td>
+                        </tr>
+                        <tr>
+                            <td><img class="con1" src="/static/img/home.jpg" alt="" />小米科技</td>
+                            <td> <img class="con1" style="width: 15%;" src="/static/img/ren.png" alt="" />王磊</td>
+                        </tr>
+                        <tr>
+                            <td ><a href="service.html"><img class="con2" style="width: 23%;float: left;" src="/static/img/sever.jpg" alt="" />联系客服</td></a> 
+                            <td colspan="2" class="att">当前状态：<a href="position.html" class="know">了解职位详情</a></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="block">
+                    <table>
+                        <tr>
+                            <td class="name" colspan="2">电话销售</td>
+                            <td class="left">2016/06/13</td>
+                        </tr>
+                        <tr>
+                            <td><img class="con1" src="/static/img/home.jpg" alt="" />小米科技</td>
+                            <td> <img class="con1" style="width: 15%" src="/static/img/ren.png" alt="" />王磊</td>
+                        </tr>
+                        <tr>
+                            <td ><a href="service.html"><img class="con2" style="width: 23%;float: left;" src="/static/img/sever.jpg" alt="" />联系客服</td></a> 
+                            <td colspan="2" class="att">当前状态：<a href="position.html" class="know">了解职位详情</a></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="block">
+                    <table>
+                        <tr>
+                            <td class="name" colspan="2">电话销售</td>
+                            <td class="left">2016/06/13</td>
+                        </tr>
+                        <tr>
+                            <td><img class="con1" src="/static/img/home.jpg" alt="" />小米科技</td>
+                            <td> <img class="con1" style="width: 15%" src="/static/img/ren.png" alt="" />王磊</td>
+                        </tr>
+                        <tr>
+                            <td ><a href="service.html"><img class="con2" style="width: 23%;float: left;" src="/static/img/sever.jpg" alt="" />联系客服</td></a> 
+                            <td colspan="2" class="att">当前状态：<a href="position.html" class="know">了解职位详情</a></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="tp tb">
+            <ul class="footer_bottom" style="margin: 2vh auto;">
+                <a class="money" href="{:Url('User/userMoney')}">
+                <img style="width:32%;display: inline-block;" src="/static/img/money2.png" ontouchstart="this.src='/static/img/money3.png'" ontouchend="this.src='/static/img/money3.png'"></a>
+                <a href="{:Url('User/useFriend')}">
+                <img style="width:32%;display: inline-block;" src="/static/img/p1.png" ontouchstart="this.src='/static/img/p3.png'" ontouchend="this.src='/static/img/p1.png'"></a>
+                <a href="{:Url('User/userAccount')}">
+                <img style="width:32%;display: inline-block;" src="/static/img/set1.png" ontouchstart="this.src='/static/img/set3.png'" ontouchend="this.src='/static/img/set1.png'"></a>
+            </ul>
+        </div>
+     </div>
+    </body>
+</head>
+<script>
+    $("#navigation>ul>li").hover(function(){
+        // 显示子菜单 - slideDown
+        $(this).children("ul").slideDown("fast");
+    },function(){
+        // 隐藏子菜单 - slideUp
+        $(this).children("ul").slideUp("fast");
+    });
+    $("#navigation-me>ul>li").hover(function(){
+        // 显示子菜单 - slideDown
+        $(this).children("ul").slideDown("fast");
+    },function(){
+        // 隐藏子菜单 - slideUp
+        $(this).children("ul").slideUp("fast");
+    });
+
+    
+</script>
+</html>

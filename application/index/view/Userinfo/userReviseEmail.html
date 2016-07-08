@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+		<title>修改-邮箱</title>
+		<meta name="keywords" content="" />
+		<meta name="description" content="" />
+		<link href="/static/css/index.css" rel="stylesheet" type="text/css" />
+		<script src="/static/js/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/static/js/index.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<style>
+		*{text-decoration: none;padding: 0;margin: 0;font-family: "Microsoft YaHei";}
+		.oldTel{margin: 5vh auto;text-align: center;font-size: 3vh;color: #a7a6a6}
+		.oldTel .now{font-size: 2.5vh}
+		.icon1{font-weight:bold;width:90%;height:6vh;background:url('/static/img/tel.png') no-repeat 2% center;background-size:5vw auto;background-color: #eee;margin: 2vh 5%;border-radius: 0.5vh;}
+		.icon1 .telephone{float:left;border:none;background:none;height:6vh;line-height:6vh;width:100%; text-indent:10%;font-size: 4vw;border-radius:  0.5vh;}
+		.icon2{width:90%;height:6vh;margin: 0vh 5%;border-radius: 0.5vh;}
+		.icon2 .captaha{background:url('/static/img/email.png') no-repeat 3% center;background-size:5vw auto;background-color:#eee;height:6vh;line-height:30px;width:60%; text-indent:16%;font-size: 2.5vh;border-radius: 0.5vh;border:none;}
+		.icon2 .num{width:35%;height:6vh;line-height:6vh;color:#a7a6a6;font-size:3.8vw;background-color: #eee;display:block;float:right;display: inline-block;border-radius:  .5vh;}
+		.text{width:90%;margin: 2vh auto;color:#a7a6a6;font-size: 2vh;text-align: center;}
+		.text span{color:#6ac9ff;}
+		.btn{width:90%;height:6vh;border-radius:1vw;margin: 0 auto;color:#fff;background-color: #1bb2e9;text-align: center;line-height:6vh;font-size: 3vh;margin-top:35vh;}
+	</style>
+	<body>
+		<div class="tp" id="main" style="min-width:300px!important; max-width:768px!important;  margin:auto; overflow:hidden;">
+			<img src="/static/img/reviseEmail.png" class="banner"></img>
+			<div class="oldTel">
+				<p class="now">当前邮箱</p>
+				<p>136xxxx9669@163.com</p>
+			</div>
+			<div class="icon1">
+				<input type="tel" id="phone" class="telephone" placeholder="&nbsp;请输入新邮箱">
+			</div>
+			<div class="icon2">
+				<input type="text" class="captaha" placeholder="&nbsp;请输入验证码">	
+				<div class="num" onclick="">&nbsp;&nbsp;获取验证码</div>
+			</div>
+			<p class="text">（验证码将发送到您当前的手机号136****6923，请注意查收，<span>52秒</span>后重发）</p>
+			<div class="btn">完成</div>
+		</div>
+	</body>
+
+</html>

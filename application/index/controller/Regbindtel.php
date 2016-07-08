@@ -24,13 +24,15 @@ class Regbindtel extends Controller
 		    $validate = new vUserReginfo;
 		    if(!$validate->check($post,[],'regtel')){
 		        // 验证失败 输出错误信息
-		        return $this->error($validate->getError());
+		        return json(['status'=>0,'msg'=>$validate->getError(),'url'=>'']);
+		        //return $this->error($validate->getError());
 		    }
 		    $phone = $post['UR_PHONE'];
 		    $code = $post['UC_CODE'];
 	        $uc_logic = new lgUserCode;
 	        if(!$uc_logic->RU_checkcode($phone,$code)){
-	            return $this->error('验证码失效');
+	            return json(['status'=>0,'msg'=>'验证码失效','url'=>'']);
+	            //return $this->error('验证码失效');
 	        }
 		    
 		    
@@ -38,9 +40,11 @@ class Regbindtel extends Controller
 			$ur_logic = new lgUserReginfo;
 			//调用User的方法判断验证登录
 			if($ur_logic->U_bindtel($phone)){
-				return $this->success('绑定成功','/index.php/index/Login/ucenter');
+			    return json(['status'=>0,'msg'=>'绑定成功','url'=>'/index.php']);
+				//return $this->success('绑定成功','/index.php');
 			}else{
-				return $this->error('绑定失败');
+			    return json(['status'=>0,'msg'=>'绑定失败','url'=>'']);
+				//return $this->error('绑定失败');
 			}
 		}
     	return $this->fetch('reg/bindTel');

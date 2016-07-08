@@ -3,6 +3,7 @@ namespace app\index\controller;
 use think\Controller;
 use think\Request;
 use think\Session;
+use think\Cookie;
 use app\index\logic\api\Sms;
 use app\index\logic\UserCode as lgUserCode;
 use app\index\logic\UserReginfo as lgUserReginfo;
@@ -17,6 +18,7 @@ class Regtel extends Controller
     	$post = Request::instance()->post();
     	
     	if($submit){
+    	    //dump($post);exit;
     	    //验证提交数据
 	    	//$result = (new vUserReginfo)->check($post,[],'regtel');
 	    	//$post['UR_PHONE'] = $post['UR_PHONE'];
@@ -34,15 +36,20 @@ class Regtel extends Controller
 	    	$ur_logic = new lgUserReginfo;
 	    	try{
 	    	    if($ur_logic->C_User($post)){
-	    	        return $this->success('注册成功','/index.php/index/Reginfo/subinfo');
+	    	        return json(['status'=>1,'msg'=>'注册成功','url'=>'/index.php/index/Reginfo/subinfo']);
+	    	        //return $this->success('注册成功','/index.php/index/Reginfo/subinfo');
 	    	    }else{
 	    	        Session::delete('ruid');
-	    	        return $this->error('注册失败');
+	    	        Cookie::delete('ruid');
+	    	        return json(['status'=>0,'msg'=>'注册失败','url'=>'']);
+	    	        //return $this->error('注册失败');
 	    	    }
 	    	}catch (\Exception $e){
 	    	    //dump($e->getCode());exit;
 	    	    Session::delete('ruid');
-	    	    return $this->success($e->getMessage(),'/index.php/index/Logintel/login');
+	    	    Cookie::delete('ruid');
+	    	    return json(['status'=>0,'msg'=>$e->getMessage(),'url'=>'/index.php/index/Logintel/login']);
+	    	    //return $this->success($e->getMessage(),'/index.php/index/Logintel/login');
 	    	}
 	    	
     	}
@@ -59,6 +66,10 @@ class Regtel extends Controller
 	            $msg = "欢迎注册秒小空,您的验证码是";
 	        }
 	        $data=$msg.$verify;
+	        //验证手机号是否注册
+	        if(!(new lgUserReginfo)->R_userByTel($phone)){
+	            return ['status'=>0,'msg'=>'此手机号尚未注册，请先注册','url'=>'/index.php/index/Regtel/reg'];
+	        }
 	        $res= $sms->SendData($phone,$data,$verify);
 	        return json($res);
 	    }

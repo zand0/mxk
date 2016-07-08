@@ -51,11 +51,21 @@ class UserInfo
             model('UserReginfo')->allowField(true)->save($data,['UR_ID'=>$data['UR_ID']]);
         }
         
-        if($data['UWE_ACC']){
-            model('UserWechat')->allowField(true)->save($data);
+        /*if($data['UWE_ACC']){
+            $uw = model('UserWechat');
+            if($uw->where('UR_ID',$data['UR_ID'])->find()){
+                $uw->allowField(true)->save($data,['UR_ID'=>$data['UR_ID']]);
+            }else{
+                $uw->allowField(true)->save($data);
+            }
+            
+        }*/
+        if($uim->where('UR_ID',$data['UR_ID'])->find()){
+            $uim->allowField(true)->save($data,['UR_ID'=>$data['UR_ID']]);
+        }else{
+            $uim->data($data)->allowField(true)->save();
         }
-        //过滤post数组中的非数据表字段数据
-        $uim->data($data)->allowField(true)->save();
+        
         return 1;   
     }
     
@@ -69,6 +79,131 @@ class UserInfo
             return true;
         }
     }
-    
-}
 
+
+
+
+
+    /**
+     * @ action 获取用户信息 （姓名，头像）
+     * @ Parameter 参数
+     * @ return 返回 数组array()
+     * @ author laowen
+     * @ date 16/07/06
+     */
+
+    public function R_userInfo_nameAndPhoto( $ruid=NULL ){
+
+        if ( !$ruid ) {
+            
+            $ruid = Session::get('ruid')?Session::get('ruid'):0;
+
+            if( $ruid == 0) {
+
+                return "请先登录"; die();
+
+            }
+
+        }           
+
+        $md_userInfo = new mdUserInfo();
+
+        $dt_userInfo = $md_userInfo->where( 'UR_ID',$ruid )->column('UI_PHOTO','UI_NAME');
+
+        $data = array();
+
+        foreach ( $dt_userInfo as $key => $value) {
+
+            $data['UI_NAME'] = $key;
+
+            $data['UI_PHOTO'] = $value;
+            
+        }
+
+        return $data;
+
+    }
+
+    /**
+     * @ action 上传后修改用户头像地址
+     * @ Parameter 
+     * @ return 返回
+     * @ author laowen
+     * @ date 16/07/06
+     */
+
+    public function U_userInfo_photo($url){
+
+        $ruid = Session::get('ruid')?Session::get('ruid'):0;
+
+        if( $ruid == 0) {
+
+            return "请先登录"; die();
+
+        }       
+
+        $md_userInfo = new mdUserInfo();
+
+        return $md_userInfo->where('UR_ID', $ruid)->update( ['UI_PHOTO' => $url ] );
+
+    }
+
+    /**
+     * @ action 修改 姓名
+     * @ Parameter 
+     * @ return true/false
+     * @ author laowen
+     * @ date 16/07/07
+     */ 
+
+    public function U_userName(){
+
+        $ruid = Session::get('ruid')?Session::get('ruid'):0;
+
+        if( $ruid == 0) {
+
+            return "请先登录"; die();
+
+        }
+
+        $uiName = input('post.uname');
+
+        $md_userInfo = new mdUserInfo();
+
+        $dt_userInfo = $md_userInfo->where('UR_ID', $ruid)->update( ['UI_NAME' => $uiName ] );
+
+        if ( !$dt_userInfo ) {
+
+            return "姓名修改失败；请稍后修改！";
+            
+        }else{
+
+            return "修改成功！";
+
+        }
+        
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+}

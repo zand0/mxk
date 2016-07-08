@@ -6,6 +6,8 @@
 	<title>密码登录</title>
 	<link rel="stylesheet" href="/static/css/Normalize.css">
 	<link rel="stylesheet" href="/static/css/common.css">
+	<script type="text/javascript" src="/static/js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="/static/js/userfunc.js"></script>
 	<!--[if lt IE 9]>
     <link href="./static/css/main.css" rel="stylesheet" />
     <script src="/Scripts/excanvas.compiled.js" type="text/javascript"></script>
@@ -15,22 +17,24 @@
 	.opacity .container .icon1{width:80%;height:6vh;background:url('/static/img/tel.png') no-repeat 2% center;background-size:5vw auto;background-color: #fff;margin: 5vh 10%;border-radius: 0.5vh;}
 	
 	.opacity .container .icon1 .telephone{float:left;border:none;background:none;height:6vh;line-height:6vh;width:100%; text-indent:10%;font-size: 4vw;border-radius:  0.5vh;}
-	.opacity .container .icon2{width:80%;height:6vh;background:url('/static/img/password.png') no-repeat 2% center;background-size:5vw auto;background-color: #fff;margin: 5vh 10%;border-radius: 0.5vh;}
+	.opacity .container .icon2{width:80%;height:6vh;background:url('/static/img/password.png') no-repeat 2% center;background-size:5vw auto;background-color: #fff;margin: 5vh 10% 0px 10%;border-radius: 0.5vh;}
 	.opacity .container .icon2 .password{float:left;border:none;background:none;height:6vh;line-height:6vh;width:100%; text-indent:10%;font-size: 4vw;border-radius: 0.5vh;}
-	.opacity .container .confirm{color: #fff;width:40%;margin: 5vh 46% 0 54%;}
-	.opacity .container .confirm img{width: 4vh;display: inline-block;vertical-align: middle;}
-	.opacity .container .confirm a{font-size:4vw;color: #fff}
-	.opacity .container .btn-login{width:80%;height:6.5vh;margin: 5vh 10%;background-color:#A1CE3D;font-size:5vw;text-align:center;color: #fff;border-radius: 0.5vh;line-height: 5vh;text-align: center;}
-	.opacity .container .btn-login span{float: right;margin-right:20px;line-height: 5vh;font-size:5vw;}
-	.opacity .container p{width: 40%;margin: 2vh 33%;}
+	.opacity .container .confirm{color: #fff;width:40%;margin: 2vh 46% 0 54%;}
+	.opacity .container .confirm img{width: 2.5vh;display: inline-block;vertical-align: baseline;}
+	.opacity .container .confirm a{color: #fff;vertical-align:initial}
+	.opacity .container .btn-login{width:80%;height:6.5vh;margin: 2vh 10%;background-color:#A1CE3D;font-size:4vw;text-align:center;color: #fff;border-radius: 0.5vh;line-height: 5vh;text-align: center;}
+	.opacity .container .btn-login img{width:6%;}
+	.opacity .container .btn-login span{float: right;margin-right:20px;line-height: 5vh;font-size:4vw;}
+	.opacity .container p{width: 40%;margin: 1vh 33%;}
 	.opacity .container p a{text-decoration: none;color: #fff; font-size:3vw;}
 	.opacity .container .btn-weixin{border:none;width:80%;height:6.5vh;margin: 3vh 10% 10vh 10%;text-align:center;background-color:#2EB8EB;border-radius: 0.5vh}
 	.opacity .container .btn-weixin img{width:4vh;margin-bottom: -1vh;}
-	.opacity .container .btn-weixin span{font-size:4vw;color: #fff;margin-left: 10px;line-height: 5vh; }
+	.opacity .container .btn-weixin span{font-size:4vw;color: #fff;margin-left: 10px;line-height: 4vw; }
+	.btn-login img{float: right;margin-top:1vh;margin-right:1vh;width:3vh;}
 	</style>
 </head>
 <body id="wrap" onload="init()">
-<form action="" method="post">
+<form id="form1" onsubmit="doSubmit(this.action);return false;" action="" method="post">
 	<div class="opacity">
 		<div class="container">
 			<img class="logo" src="/static/img/logo.png" alt="">	
@@ -46,9 +50,9 @@
 				<a href="/index.php/index/Logintel/login">验证码登录</a>
 			</div>
 			<input type="hidden" name="submit" value="1" />
-			<button onclick="this.submit" class="btn-login" >登录<span>></span></button>
+			<button class="btn-login" >登录<span>></span></button>
 			<p><a href="/index.php/index/regtel/reg">没有账号？去注册</a></p>
-			<button class="btn-weixin" onclick=""><img src="/static/img/weixin.png" alt=""><span>微信账号登录</span></button>
+			<button class="btn-weixin" onclick="location.href='/index.php/index/Regwechat'"><img src="/static/img/weixin.png" alt=""><span>微信账号登录</span></button>
 		</div>
 	</div>	
 </form>
@@ -93,6 +97,14 @@
         }
            
       
-    } 
+    }
+    function doSubmit(url){
+    	var formdata = {};
+    	formdata.UR_PHONE = $('#phone').val();
+    	formdata.UR_PWD = $('#password').val();
+    	formdata.submit = 1;
+    	sendData(url,formdata);
+    }
+    
 </script>
 </html>

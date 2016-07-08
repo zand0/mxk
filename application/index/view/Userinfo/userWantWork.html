@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+		<title>我的简历--期望工作</title>
+		<meta name="keywords" content="" />
+		<meta name="description" content="" />
+		<link href="/static/css/index.css" rel="stylesheet" type="text/css" />
+		<script src="/static/js/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/static/js/index.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<style>
+		*{text-decoration: none;padding: 0;margin: 0;font-family: "Microsoft YaHei";}
+		.message{text-align: center;font-size: 1.5em;margin:6% auto 4%;}
+		.text{margin-top: 10%;}
+		.text a{margin-left: 10%;font-size: 1em;text-decoration: none;color: #000}
+		.descript{width: 40vw;margin: 2vh auto;font-size: 3vh;text-align: center;}
+		.save1{border:1px solid #1BB2E9;width: 30%;height:30px;line-height:30px;color:#fff;background-color: #1BB2E9;text-align: center;margin:20% 5% 10% auto;border-radius: 3px;}
+		.save2{width: 30%;height:30px;line-height:30px;color:#1BB2E9;border:1px solid #1BB2E9;text-align: center;margin:20% 5% 10% auto;border-radius: 3px;}
+		.clear{clear: both;}
+		.tb{background-color: #fff;}
+		hr{background-color: #ccc; margin:5% auto;}
+		input{width: 66vw;border: none;}
+		input,textarea {border: 0; /* 方法1 */-webkit-appearance: none; /* 方法2 */}
+		.save{width: 36%;height:30px;line-height:30px;color:#fff;background-color: #1BB2E9;text-align: center;margin:10% auto 10% auto;border-radius: 3px;}
+		.search{width:70%;height: 5vh;font-size: 3vh;margin-left:15vw;text-align: center}
+	</style>
+	<body>
+		<div class="tp" id="main" style="min-width:300px!important; max-width:768px!important;  margin:auto; overflow:hidden;">
+			<!-- <img src="/static/img/title.png" alt="" /> -->
+			<img src="/static/img/resumebanner.png" class="banner"></img>
+			<p class="descript">期望工作</p>
+			<div class="text">
+				<input class="search" type="text" value="输入你期望的职位" onFocus="if(value==defaultValue){value='';this.style.color='#000'}" onBlur="if(!value){value=defaultValue;this.style.color='#999'}" style="color:#999999;border: 1px solid #999"/>
+			</div>
+			<div class="text">
+				<a href="">职位性质：<input type="text" /></a>
+			</div>
+			<hr />
+			<div class="text">
+				<a href="">期望城市：<input type="text" /></a>
+			</div>
+			<hr />
+			<div class="text">
+				<a href="">期望月薪：<input type="text" /></a>
+			</div>
+			<hr />
+			<div class="text">
+				<a href="">补充说明: <br />	
+				<input type="text" style=" width: 88vw;margin: 0 3vh;border: 1px solid #999;height: 15vh;" />
+				<div class="save">保存</div>
+			</div>
+		
+			<!-- 底部 start -->
+
+			<div class="tp tb clear">
+				<ul class="footer_bottom" style="margin: 0 auto;">
+					<a class="money" href="{:Url('User/userMoney')}">
+						<img style="width:32%;display: inline-block;" src="/static/img/money1.png" ontouchstart="this.src='/static/img/money3.png'" ontouchend="this.src='/static/img/money1.png'"/></a>
+					<a href="{:Url('User/useFriend')}">
+						<img style="width:32%;display: inline-block;" src="/static/img/p1.png" ontouchstart="this.src='/static/img/p3.png'" ontouchend="this.src='/static/img/p1.png'" /></a>
+					<a href="{:Url('User/userAccount')}">
+						<img style="width:32%;display: inline-block;" src="/static/img/set2.png" ontouchstart="this.src='/static/img/set3.png'" ontouchend="this.src='/static/img/set1.png'" /></a>
+				</ul>				
+			</div>
+
+			<!-- 底部 end -->
+			
+			
+			
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+		<title>我的简历--教育经历</title>
+		<meta name="keywords" content="" />
+		<meta name="description" content="" />
+		<link href="/static/css/index.css" rel="stylesheet" type="text/css" />
+		<script src="/static/js/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/static/js/index.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<style>
+		*{margin: 0;padding:0;font-family: "Microsoft YaHei";}
+		.message{text-align: center;font-size: 1.5em;margin:6% auto 4%;}
+		.text{margin-top: 10%;}
+		.text a{margin-left: 10%;font-size: 1em;text-decoration: none;color: #000}
+		.descript{width: 40vw;margin: 2vh auto;font-size: 3vh;text-align: center;}
+		.text p .pic{float:left;}
+		.save1{border:1px solid #1BB2E9;width: 30%;height:30px;line-height:30px;color:#fff;background-color: #1BB2E9;text-align: center;margin:20% 5% 10% auto;border-radius: 3px;}
+		.save2{width: 30%;height:30px;line-height:30px;color:#1BB2E9;border:1px solid #1BB2E9;text-align: center;margin:20% 5% 10% auto;border-radius: 3px;}
+		.clear{clear: both;}
+		.tb{background-color: #fff;}
+		hr{background-color: #ccc; margin:5% auto;}
+		input{width: 66vw;border: none;}
+		.save{width: 36%;height:30px;line-height:30px;color:#fff;background-color: #1BB2E9;text-align: center;margin:20% auto 10% auto;border-radius: 3px;}
+		.footer_bottom{margin: 0 auto;}
+		.footer_bottom a img{width:32%;display: inline-block;}
+	</style>
+	<body>
+		<div class="tp" id="main" style="min-width:300px!important; max-width:768px!important;  margin:auto; overflow:hidden;">
+			<img src="/static/img/resumebanner.png" class="banner"></img>
+			<p class="descript">教育经历</p>
+			<div class="text">
+				<a href="">学校名称：<input type="text" /></a>
+			</div>
+			<hr />
+			<div class="text">
+				<a href="">学历：<input type="text" /></a>
+			</div>
+			<hr />
+			<div class="text">
+				<a href="">专业：<input type="text" /></a>
+			</div>
+			<hr />
+			<div class="text">
+				<a href="">开始时间：<input type="text" /></a>
+			</div>
+			<hr />
+			<div class="text">
+				<a href="">结束时间：<input type="text" /></a>
+				<div class="save">保存</div>
+			</div>
+			<hr />
+
+
+			<!-- 底部 start -->
+
+			<div class="tp tb clear">
+				<ul class="footer_bottom" style="margin: 0 auto;">
+					<a class="money" href="{:Url('User/userMoney')}">
+						<img style="width:32%;display: inline-block;" src="/static/img/money1.png" ontouchstart="this.src='/static/img/money3.png'" ontouchend="this.src='/static/img/money1.png'"/></a>
+					<a href="{:Url('User/useFriend')}">
+						<img style="width:32%;display: inline-block;" src="/static/img/p1.png" ontouchstart="this.src='/static/img/p3.png'" ontouchend="this.src='/static/img/p1.png'" /></a>
+					<a href="{:Url('User/userAccount')}">
+						<img style="width:32%;display: inline-block;" src="/static/img/set2.png" ontouchstart="this.src='/static/img/set3.png'" ontouchend="this.src='/static/img/set1.png'" /></a>
+				</ul>				
+			</div>
+
+			<!-- 底部 end -->
+		
+			
+			
+		</div>
+	</body>
+
+</html>
